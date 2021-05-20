@@ -2,21 +2,35 @@
 
 ### Why CI?
 
-- Nowadays we have team with a lot of developers;
-- The team usually finish their spring work at same time;
-- Problem integrating all the changes and merging, deploing the applications on the dev, qa machines.
-- Delay and a lot of headeache dealing with all the changes coming at same time,
+- Nowadays we have big teams with a lot of developers;
+- The team usually finish the sprint tasks at same time;
+- Problem integrating all the changes and merge process, deploying the applications on the dev, qa machines;
+- Delay and a lot of headache dealing with all the changes coming at same time.
 
-```
-CI is development practice that requires developers to integrate code into a shared repository several times a day.
-```
 
-### How does it work?
+CI defines some practices and pattern in order to integrate the code in the main repository as fast as possible in small quantities.
+
+It is part of CD (Continous Delivery) and DevOps. 
+
+CD is the next step and it is related the application deploy.
+
+DevOps is culture moviment aiming a better communication and work among the teams, since the developers until operation team. DevOps is about collaboration, improvement and continuous learning
+
+
+### How Make It Work?
 
 - CI demands a VCS (git for example) for handle the changes and the differents branch version;
-- Test Automation for always test the integrate of the code and make easy the integration in the repositories since there will be a set of tests that will insure the branch stability;
+- Test Automation for always test the integrity of the code and make easy the integration in the repositories since there will be a set of tests that will insure the branch stability;
 - Automated application build for increase the speed, check the stability and make easier the deploy on the environments;
 - Use CI-daemon (CI machine to handle the repo and the CI)
+
+
+#### How avoid long life branches (Idealist vision)
+
+The idea of CI is put all the new code in a main branch, avoiding feature and development features for example. In order to do that exists many ways, such as:
+
+- Features Flags: Use a flag system to not use the new code until be ok to use it.
+- Branch By Abstraction: Each module or feature will be used through an interface, so It will be possible create a new implementation without impacting the current code. Eventually when everything be all right with the new version It will be just necessary switch the implementation.
 
 ### Branching Models
 
@@ -63,12 +77,17 @@ High-lights points:
     - Simple commands to build.
 - Use buld machine(CI Daemon).
 
-## How avoid long life branches
+### CI-daemon
 
-The idea of CI is put all the new code in a main branch, avoiding feature and development features for example. In order to do that exists many ways, such as:
+Each commit or branch will execute the pipeline to check the status of the code.
 
-- Features Flags: Use a flag system to not use the new code until be ok to use it.
-- Branch By Abstraction: Each module or feature will be used through an interface, so It will be possible create a new implementation without impacting the current code. Eventually when everything be all right with the new version It will be just necessary switch the implementation.
+There are many CI-daemons tools on market, such as, Jenkins, Gitlab, AWS Code Pipeline  and Azure.
+
+A CI-daemon features and responsabilities:
+
+- Run the build of each branch and repository (Watching changes, find changes to run a new pipeline build/test, run build);
+- Give feedback about the pipelines, especially when fails (Integration with Slack for example);
+- Publish and keep the build artifact after completed.
 
 ### Cool Links
 
